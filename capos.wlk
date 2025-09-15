@@ -1,12 +1,14 @@
 object rolando {
     var property   mochila = []
     var capacidadMochila = 2
-    var property artefactosTotales = []
+    var property hogar = castillo
     method recolectar(artefacto){
         self.validarTamañoDeMochila(mochila.size())
         mochila.add(artefacto)
     }
     method capacidadMochila(tamaño){  capacidadMochila = tamaño}
+
+    method hogar(lugar){ hogar = lugar}
     
     method validarTamañoDeMochila(tamaño){
         return if(tamaño >= capacidadMochila){
@@ -17,10 +19,12 @@ object rolando {
         lugar.almacenarArtefactos()
     }
     method posesiones(){
-        artefactosTotales = artefactosTotales + self.mochila() + castillo.almacenDeArtefactos()
-        return artefactosTotales
+        return mochila + hogar.almacenDeArtefactos()
+        
     }
-    method rolandoPosee
+    method rolandoPosee(artefacto){
+        return self.posesiones().contains(artefacto)
+    }
 }
 
 
