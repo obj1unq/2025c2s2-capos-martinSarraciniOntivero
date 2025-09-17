@@ -3,15 +3,20 @@ object rolando {
     var capacidadMochila = 2
     var property hogar = castillo
     var property historialArtefactos = []
+    var property poderPelea = 10
+    var property poderBase = 5
+
     method recolectar(artefacto){
          historialArtefactos.add(artefacto)
         self.validarTamañoDeMochila(mochila.size())
         mochila.add(artefacto)
     }
     method capacidadMochila(tamaño){  capacidadMochila = tamaño}
-
+    method poderPelea(valor){ poderPelea = valor}
     method hogar(lugar){ hogar = lugar}
-    
+    method poderBase(valor){ poderBase = valor}
+ 
+
     method validarTamañoDeMochila(tamaño){
         return if(tamaño >= capacidadMochila){
             self.error("no puede agarrar el artefacto por falta de espacio en mochila")
@@ -35,7 +40,7 @@ object espadaDelDestino{
 }
 
 object libroDeHechizos{
-
+    
 }
 
 object collarDivino{
