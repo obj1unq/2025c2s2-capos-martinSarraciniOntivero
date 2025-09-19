@@ -52,17 +52,14 @@ object espadaDelDestino{
     var property poder = 0
     method aumentarPoder(personaje){
         if( personaje.cantPeleas() < 3){
-            personaje.poderPelea(personaje.poderPelea())
+            personaje.poderPelea(personaje.poderBase())
         }else{
-            personaje.poderPelea(personaje.poderPelea() / 2)
+            personaje.poderPelea(personaje.poderBase() / 2)
         }
     }
 }
 
 
-object libroDeHechizos{
-    
-}
 
 object collarDivino{
     var property poder = 3
@@ -92,4 +89,26 @@ object castillo{
         rolando.mochila().clear()
     }
 
+}
+
+object libroDeHechizos{
+    var property  hechizos = []
+    method aprenderHechizo(hechizo){
+        hechizos.add(hechizo)
+    }
+    method aumentarPoder(personaje){
+
+    }
+}
+
+object bendicion{
+    var property poder = 4
+    method aplicarPoder(personaje){
+        personaje.poderPelea(personaje.poderPelea() + poder)
+    }
+}
+object invisibilidad{
+    method aplicarPoder(personaje){
+        personaje.poderPelea(personaje.poderPelea() + personaje.poderBase())
+    }
 }
