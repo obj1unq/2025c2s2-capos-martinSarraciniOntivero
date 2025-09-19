@@ -1,0 +1,44 @@
+import capos.*
+
+test "1.1 recolectarArtefactos "{
+    rolando.recolectar(espadaDelDestino)
+    assert.equals(1, rolando.mochila().size())
+    rolando.recolectar(libroDeHechizos)
+    assert.equals(2, rolando.mochila().size())
+    assert.throwsException({ rolando.recolectar(collarDivino) }) // error: no puede agarrar el artefacto por falta de espacio en mochila
+    rolando.llegarA(castillo)
+    assert.equals(0, rolando.mochila().size())
+    assert.equals(2, castillo.almacenDeArtefactos().size())
+}
+
+test "1.2 deja artefactos en el castillo y vuelve a recoger"{
+    rolando.recolectar(espadaDelDestino)
+    rolando.recolectar(libroDeHechizos)
+    rolando.llegarA(castillo)
+    assert.equals(0, rolando.mochila().size())
+    assert.equals(2, castillo.almacenDeArtefactos().size())
+    rolando.recolectar(collarDivino)
+    assert.equals(1, rolando.mochila().size())
+    rolando.llegarA(castillo)
+    assert.equals(3, castillo.almacenDeArtefactos().size())
+}
+
+test "1.3 posee artefactos"{
+    rolando.recolectar(espadaDelDestino)
+    rolando.recolectar(libroDeHechizos)
+    rolando.llegarA(castillo)
+    rolando.recolectar(escudoDeAceroValytio)
+    assert.equals(3, rolando.posesiones().size())
+}
+
+//preguntar lunes
+test "1.4 consultar historia de los artefactos"{
+    rolando.recolectar(espadaDelDestino)
+    rolando.recolectar(libroDeHechizos)
+    rolando.llegarA(castillo)
+    rolando.recolectar(escudoDeAceroValytio)
+    assert.equals(3, rolando.historialArtefactos().size())
+    assert.equals(true, rolando.historialArtefactos().contains(espadaDelDestino))
+    assert.equals(true, rolando.historialArtefactos().contains(libroDeHechizos))
+    assert.equals(true, rolando.historialArtefactos().contains(escudoDeAceroValytio))
+}
